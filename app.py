@@ -4,6 +4,21 @@ import plotly.graph_objects as go
 from datetime import timedelta, date
 
 st.set_page_config(page_title="Temperature Chart", layout="wide")
+
+# Force dark theme via CSS since config.toml is not used
+st.markdown("""
+<style>
+  .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
+      background-color: #0e1117;
+      color: #fafafa;
+  }
+  [data-testid="stSidebar"] { background-color: #161a25; }
+  .stDataFrame, [data-testid="stDataFrame"] { color: #fafafa; }
+  h1, h2, h3, label, p { color: #fafafa !important; }
+  [data-testid="stSlider"] label { color: #fafafa !important; }
+</style>
+""", unsafe_allow_html=True)
+
 st.title("Max Temperature (°F)")
 
 # ─── Load data from secrets ────────────────────────────────────────────────────
@@ -168,7 +183,7 @@ fig.update_layout(
         y=1.02,
         xanchor="right",
         x=1,
-        font=dict(size=16),
+        font=dict(size=16, color="white"),
     ),
     paper_bgcolor="#0e1117",
     plot_bgcolor="white",
